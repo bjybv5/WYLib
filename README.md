@@ -367,7 +367,7 @@ sentinel_data_download(product_name_list, path="./Downloads")
 
 #### load_spectral_respones_function
 
-读取Sentinel-2 MSI光谱响应函数(https://sentiwiki.copernicus.eu/web/s2-documents)， 读取波长范围327nm - 940nm，包含B1、B2、B3、B4、B5、B6、B7、B8、B8A共9个波段，载荷名称`S2A`, `S2B`, `S2C`三选一。
+读取Sentinel-2 MSI光谱响应函数( https://sentiwiki.copernicus.eu/web/s2-documents )，读取波长范围327nm - 940nm，包含B1、B2、B3、B4、B5、B6、B7、B8、B8A共9个波段，载荷名称`S2A`, `S2B`, `S2C`三选一。
 
 ```python
 from wylib.utils import *
