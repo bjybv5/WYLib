@@ -1,10 +1,10 @@
 # 卫源擎 (WYLib)
 
-###### v1.0.1
+###### v1.0.2
 
 卫星影像常见操作 ***Python*** 库，如读写影像，大气校正，根据经纬度/矢量取光谱，重采样，光谱绘制等。
 
-主要依赖库: `numpy 1.x`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `snappy`, `openpyxl`等。
+主要依赖库: `numpy 1.x`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `esa_snappy`, `openpyxl`等。
 <!--
 ## 功能目录
 
