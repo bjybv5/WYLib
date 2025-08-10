@@ -94,7 +94,7 @@
 本库目前仅支持Wheel文件安装即可。
 
 ```bash
-pip install wylib-1.0.1-py3-none-any.whl
+pip install wylib-1.0.2-py3-none-any.whl
 ```
 
 ## 各类方法介绍及示例
