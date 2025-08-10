@@ -91,7 +91,7 @@
 
 若无Conda环境需先创建，并确保`numpy`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `snappy`, `requests`等库已安装完毕。
 
-本库目前仅支持Wheel文件安装即可。
+本库目前仅支持Wheel文件安装。
 
 ```bash
 pip install wylib-1.1.0-py3-none-any.whl
