@@ -1,10 +1,10 @@
 # 卫源擎 (WYLib)
 
-###### v1.0.2
+###### v1.1.0
 
 卫星影像常见操作 ***Python*** 库，如读写影像，大气校正，根据经纬度/矢量取光谱，重采样，光谱绘制等。
 
-主要依赖库: `numpy 1.x`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `esa_snappy`, `openpyxl`等。
+主要依赖库: `numpy`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `esa_snappy`, `openpyxl`等。
 <!--
 ## 功能目录
 
@@ -89,12 +89,12 @@
 -->
 ## Wheel文件安装
 
-若无Conda环境需先创建，并确保`numpy 1.x`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `snappy`, `requests`等库已安装完毕。
+若无Conda环境需先创建，并确保`numpy`, `GDAL`, `opencv-python`, `matplotlib`, `pandas`, `tqdm`, `snappy`, `requests`等库已安装完毕。
 
 本库目前仅支持Wheel文件安装即可。
 
 ```bash
-pip install wylib-1.0.2-py3-none-any.whl
+pip install wylib-1.1.0-py3-none-any.whl
 ```
 
 ## 各类方法介绍及示例
