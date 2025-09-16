@@ -1,6 +1,6 @@
 # 卫源擎 (WYLib)
 
-###### v1.1.0
+###### v1.1.1
 
 卫星影像常见操作 ***Python*** 库，如读写影像，大气校正，根据经纬度/矢量取光谱，重采样，光谱绘制等。
 
@@ -94,7 +94,7 @@
 本库目前仅支持Wheel文件安装。
 
 ```bash
-pip install wylib-1.1.0-py3-none-any.whl
+pip install wylib-1.1.1-py3-none-any.whl
 ```
 
 ## 各类方法介绍及示例
@@ -144,6 +144,43 @@ rs_image = RSImage("./res/input_image.dat")
 print(rs_image.get_lonlat(365, 325))
 ```
 
+#### resample
+
+重采样至指定大小。
+
+```python
+from wylib.models.RSImage import *
+
+rs_image = RSImage("./res/input_image.dat")
+rs_image.resample(1024, 1024, method="nearest")
+rs_image.save_as("./output.tif")
+```
+
+#### resample_by_resolution
+
+重采样至指定分辨率，单位米或度。
+
+```python
+from wylib.models.RSImage import *
+
+rs_image = RSImage("./res/input_image.dat")
+rs_image.resample_by_resolution(2, method="bicubic")
+rs_image.save_as("./output.tif")
+```
+
+#### image_cover
+
+影像空间覆盖，接受相同坐标系、分辨率RSImage对象输入，产生RSImage对象输出。
+
+```python
+from wylib.utils_rsimage import *
+
+image_base = RSImage("./input_image_1.dat")
+image_wrap = RSImage("./input_image_2.tif")
+output_image = image_cover(image_base, image_wrap)
+output_image.save_as("./output_image.dat")
+```
+
 #### save_as
 
 新建影像可先实例化空影像，再将必要属性赋值后利用`save_as`方法保存，目前支持格式`dat`、`tif`、`tiff`、`img`。
@@ -156,18 +193,6 @@ rs_image.image_array = np.zeros((3, 128, 128))
 # rs_image.img_GeoTransform = img_GeoTransform
 # rs_image.img_proj = img_proj
 rs_image.save_as("./new_image.tif")
-```
-
-#### resample
-
-重采样至指定大小。
-
-```python
-from wylib.models.RSImage import *
-
-rs_image = RSImage("./res/input_image.dat")
-rs_image.resample(1024, 1024, method="nearest")
-rs_image.save_as("./output.tif")
 ```
 
 ### Sentinel2L1CImage类
@@ -184,7 +209,7 @@ print(s2.B1)
 
 #### resample_10m
 
-重采样至10米，`resample_10m`方法返回值为`RSImage`对象，`B10_flag`标记表示结果中是否包含B10，对于Sentinel-2原数据的坐标操作需设置`sentinel_flag`为`True`。
+重采样至10米，`resample_10m`方法返回值为`RSImage`对象，`B10_flag`标记表示结果中是否包含B10，对于tif、jp2数据的坐标操作需设置`reverse_flag`为`True`。
 
 ```python
 from wylib.models.Sentinel2L1CImage import *
@@ -193,9 +218,9 @@ s2 = Sentinel2L1CImage("./res/S2C_MSIL1C_20250317T030551_N0511_R075_T50SMJ_20250
 rs_image = s2.resample_10m(method="nearest", B10_flag=False)
 
 print(rs_image)
-print(rs_image.get_imagexy("115°58'11\"", "38°56'18\"", sentinel_flag=True))
-print(rs_image.get_imagexy(115.969722, 38.938333, sentinel_flag=True))
-print(rs_image.get_lonlat(1074, 8960, sentinel_flag=True))
+print(rs_image.get_imagexy("115°58'11\"", "38°56'18\"", reverse_flag=True))
+print(rs_image.get_imagexy(115.969722, 38.938333, reverse_flag=True))
+print(rs_image.get_lonlat(1074, 8960, reverse_flag=True))
 ```
 
 `method`参数有如下可选：
@@ -238,9 +263,9 @@ s2 = Sentinel2L2AImage("./res/S2B_MSIL2A_20250319T025529_N0511_R032_T50SMJ_20250
 rs_image = s2.resample_10m(method="bicubic")
 
 print(rs_image)
-print(rs_image.get_imagexy("115°58'11\"", "38°56'18\"", sentinel_flag=True))
-print(rs_image.get_imagexy(115.969722, 38.938333, sentinel_flag=True))
-print(rs_image.get_lonlat(1074, 8960, sentinel_flag=True))
+print(rs_image.get_imagexy("115°58'11\"", "38°56'18\"", reverse_flag=True))
+print(rs_image.get_imagexy(115.969722, 38.938333, reverse_flag=True))
+print(rs_image.get_lonlat(1074, 8960, reverse_flag=True))
 ```
 
 ### 自然图像相关
