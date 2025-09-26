@@ -1,6 +1,6 @@
 # 卫源擎 (WYLib)
 
-###### v1.1.1
+###### v1.1.2
 
 卫星影像常见操作 ***Python*** 库，如读写影像，大气校正，根据经纬度/矢量取光谱，重采样，光谱绘制等。
 
@@ -94,7 +94,7 @@
 本库目前仅支持Wheel文件安装。
 
 ```bash
-pip install wylib-1.1.1-py3-none-any.whl
+pip install wylib-1.1.2-py3-none-any.whl
 ```
 
 ## 各类方法介绍及示例
@@ -178,6 +178,19 @@ from wylib.utils_rsimage import *
 image_base = RSImage("./input_image_1.dat")
 image_wrap = RSImage("./input_image_2.tif")
 output_image = image_cover(image_base, image_wrap)
+output_image.save_as("./output_image.dat")
+```
+
+#### raster_extract
+
+栅格裁剪（提取），输入影像和二值分类图，输出提取结果。需要保证影像完全覆盖分类图，接受相同坐标系、分辨率RSImage对象输入，产生RSImage对象输出。
+
+```python
+from wylib.utils_rsimage import *
+
+image = RSImage("./input_image_1.tif")
+classification = RSImage("./input_image_2.dat")
+output_image = raster_extract(image, classification)
 output_image.save_as("./output_image.dat")
 ```
 
